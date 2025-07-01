@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whisper Audio Transcription</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Whisper Audio Transcription</h1>
+            <p>Convert audio and video files to text using OpenAI's Whisper model</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <div class="drop-zone" id="dropZone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drag & Drop your audio/video file here</h3>
+                    <p>or</p>
+                    <button id="uploadButton">Browse Files</button>
+                    <input type="file" id="fileInput" accept=".mp3,.wav,.m4a,.mp4,.mov" hidden>
+                </div>
+            </section>
+
+            <section class="transcription-section" id="transcriptionSection" style="display: none;">
+                <div class="transcription-header">
+                    <h2>Transcription Results</h2>
+                    <div class="export-buttons">
+                        <button class="export-btn" onclick="exportTranscription('txt')">
+                            <i class="fas fa-file-alt"></i> Export as TXT
+                        </button>
+                        <button class="export-btn" onclick="exportTranscription('csv')">
+                            <i class="fas fa-file-csv"></i> Export as CSV
+                        </button>
+                        <button class="export-btn" onclick="exportTranscription('json')">
+                            <i class="fas fa-file-code"></i> Export as JSON
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="transcription-content" id="transcriptionContent">
+                    <!-- Transcription results will be displayed here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
